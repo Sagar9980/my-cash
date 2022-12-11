@@ -1,0 +1,165 @@
+@import "./variable.scss";
+
+
+//Text Customization
+h1,h2,h3,h4,h5{
+    &.ant-typography{
+        margin: 0;
+    }
+}
+.ant-typography{
+    margin-bottom: 5px !important;
+}
+
+//Form Customizatio
+.ant-form{
+   .ant-form-item{
+    margin: 30px 0px;
+    .ant-input, .ant-input-password, .ant-btn{
+        height: 72px;
+        border-radius: 9px;
+    }
+    .ant-input-password{
+        .ant-input{
+            height: 100%;
+        }
+    }
+    .ant-btn{
+        width: 100%;
+        margin :20px 0px;
+    }
+    .ant-form-item-label {
+        >label.ant-form-item-required {
+            color: $dark-black;
+            &:not(.ant-form-item-required-mark-optional) {
+                &::before {
+                   content: none;
+                }
+            }
+        }
+    }
+   }
+    
+}
+
+.ant-layout-sider{
+    background:$dim-white;
+}
+
+.ant-menu{
+    &.ant-menu-inline, &.ant-menu-inline-collapsed{
+        .ant-menu-item-selected{
+            background-color: $light-blue !important;
+            color: $dim-white;
+            svg{
+                path{
+                    fill: $dim-white !important;
+                }
+            } 
+
+            ::after{
+                border-right: 3px solid $light-green !important;
+            }
+        }
+        .ant-menu-item{
+            line-height: 50px;
+           
+           
+        }
+    }
+}
+.ant-layout-sider-trigger{
+    background-color: $light-blue;
+    color: $dim-white;
+}
+
+
+.ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
+    border-right: 4px solid $light-green;
+}
+
+
+//ant table customization
+.ant-table{
+    .ant-table-thead{
+        tr{
+            th{
+                color: $light-grey;
+                font-weight: 300;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+
+//ant input serarch
+.ant-input-search{
+    .ant-input{
+       border-radius: 8px 0 0 8px;
+    }
+    .ant-input-search-button{
+        border-radius: 0px 8px 8px 0px !important; 
+    }
+}
+
+//ant date picker
+.ant-picker{
+    &.ant-picker-range{
+        border-radius: 8px;
+    }
+}
+
+//ant-segmented
+.ant-segmented{
+    border-radius: 8px;
+    background-color: $dim-white;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+    .ant-segmented-item-selected{
+        background-color: $light-blue;
+        color: $dim-white;
+        border-radius: 8px;
+    }
+    .ant-segmented-thumb{
+        background-color: $light-blue;
+        border-radius: 8px;
+        color: $dim-white;
+        
+    }
+
+}
+
+
+
+
+///csss cutomizations
+.ant-form .ant-form-item {
+    margin: 30px 0px;
+  }
+  .ant-form .ant-form-item .ant-input,
+  .ant-form .ant-form-item .ant-input-password,
+  .ant-form .ant-form-item .ant-btn {
+    height: 72px;
+    border-radius: 9px;
+  }
+  .ant-form .ant-form-item .ant-input-password .ant-input {
+    height: 100%;
+  }
+  .ant-form .ant-form-item .ant-btn {
+    width: 100%;
+    margin: 20px 0px;
+  }
+  .ant-form .ant-form-item .ant-form-item-label > label.ant-form-item-required {
+    color: #342E37;
+  }
+  .ant-form .ant-form-item .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+    content: none;
+  }
+  .ant-layout-sider {
+    background: #fff;
+  }
+  .ant-menu .ant-menu-item-selected {
+    background-color: #3C91E6 !important;
+    color: #fff;
+  }
+  

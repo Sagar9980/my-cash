@@ -2,13 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "Container/App";
 import reportWebVitals from "./reportWebVitals";
+import { ConfigProvider } from "antd";
+import "Themes/App.scss";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#3C91E6",
+          fontFamily: "Poppins",
+          fontSize: 16,
+        },
+      }}
+    >
+      <App />
+    </ConfigProvider>
   </React.StrictMode>
 );
 

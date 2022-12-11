@@ -1,16 +1,7 @@
-import React from "react";
-import { Row, Col } from "antd";
-import "Themes/App.scss";
+import MainRoute from "Routes/MainRoute";
 
 function App() {
-  return (
-    <div className="App">
-      <Row justify="space-between">
-        <Col>Hello</Col>
-        <Col>World</Col>
-      </Row>
-    </div>
-  );
+  return <MainRoute />;
 }
 
 export default App;
