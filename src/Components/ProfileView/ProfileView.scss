@@ -1,0 +1,15 @@
+@import '../../Themes/variable.scss';
+
+.profile__view__container {
+    padding: 20px 30px;
+    height: 80vh;
+    background-color: $dim-white;
+
+    .profile__image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid #3C91E6;
+        margin-bottom: 10px;
+    }
+}

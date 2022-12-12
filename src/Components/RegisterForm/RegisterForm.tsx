@@ -1,31 +1,31 @@
 import { useState, useEffect } from "react";
 import { Typography, Button, Form, Input, Row, Col, Checkbox } from "antd";
-// import { ReactComponent as GoogleIcon } from "Assets/Icons/Google.svg";
+import { ReactComponent as GoogleIcon } from "Assets/Icons/Google.svg";
 import "./RegisterForm.scss";
 import { useForm } from "antd/lib/form/Form";
 import { useNavigate } from "react-router-dom";
-// import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
-// import { registerUser } from "../../Redux/Actions/AuthActions";
+import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
+import { registerUser } from "../../Redux/Actions/AuthActions";
 
 function RegisterForm() {
   const navigate = useNavigate();
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   const [form] = useForm();
-  // const values = useAppSelector((store) => store.RegisterUserReducer);
-  // useEffect(() => {
-  //   setLoading(values?.loading);
-  //   setError(values?.error);
-  // }, [values]);
+  const values = useAppSelector((store) => store.RegisterUserReducer);
+  useEffect(() => {
+    setLoading(values?.loading);
+    setError(values?.error);
+  }, [values]);
 
-  // useEffect(() => {
-  //   if (values?.response) {
-  //     navigate("/auth/login");
-  //   }
-  // }, [values?.response]);
+  useEffect(() => {
+    if (values?.response) {
+      navigate("/auth/login");
+    }
+  }, [values?.response]);
   const handleSubmit = (values: any) => {
-    // dispatch(registerUser(values));
+    dispatch(registerUser(values));
   };
   return (
     <Row align="middle" justify="center" className="register__form__container">
@@ -103,10 +103,3 @@ function RegisterForm() {
 }
 
 export default RegisterForm;
-// import React from "react";
-
-// function RegisterForm() {
-//   return <div>RegisterForm</div>;
-// }
-
-// export default RegisterForm;
