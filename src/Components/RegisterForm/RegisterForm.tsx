@@ -1,6 +1,6 @@
 // import { useState, useEffect } from "react";
 import { Typography, Button, Form, Input, Row, Col, Checkbox } from "antd";
-import { ReactComponent as GoogleIcon } from "Assets/Icons/Google.svg";
+// import { ReactComponent as GoogleIcon } from "Assets/Icons/Google.svg";
 import "./RegisterForm.scss";
 import { useForm } from "antd/lib/form/Form";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +34,10 @@ function RegisterForm() {
         <Typography.Paragraph type="secondary">
           Enter your credentials to acces your account
         </Typography.Paragraph>
-        <Button icon={<GoogleIcon />} className="google__auth__btn">
+        <Button
+          //  icon={<GoogleIcon />}
+          className="google__auth__btn"
+        >
           <Typography.Text type="secondary">
             Login in with Google
           </Typography.Text>
