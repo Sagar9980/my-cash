@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "Container/App";
 import reportWebVitals from "./reportWebVitals";
 import { ConfigProvider } from "antd";
+import { Provider } from "react-redux";
+import store from "Redux/store";
 import "Themes/App.scss";
 
 const root = ReactDOM.createRoot(
@@ -16,10 +18,13 @@ root.render(
           colorPrimary: "#3C91E6",
           fontFamily: "Poppins",
           fontSize: 16,
+          colorTextHeading: "#3C91E6",
         },
       }}
     >
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ConfigProvider>
   </React.StrictMode>
 );

@@ -4,27 +4,27 @@ import { ReactComponent as GoogleIcon } from "Assets/Icons/Google.svg";
 import "./LoginForm.scss";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "antd/lib/form/Form";
-// import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
-// import { loginUser } from "../../Redux/Actions/AuthActions";
-// import { LoginParams } from "../../Redux/ActionTypes/AuthTypes";
+import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
+import { loginUser } from "../../Redux/Actions/AuthActions";
+import { LoginParams } from "../../Redux/ActionTypes/AuthTypes";
 
 function LoginForm() {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [form] = useForm();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>();
   const handleOAuth = async () => {
-    // window.open("http://localhost:4000/api/google", "_blank")?.focus();
+    window.open("https://mycassh.netlify.app/api/google", "_blank")?.focus();
   };
-  // const values = useAppSelector((store) => store.LoginUserRecucer);
-  // useEffect(() => {
-  //   setLoading(values?.loading);
-  //   setError(values?.error);
-  // }, [values]);
-  const handleSubmit = async () => {
-    // await dispatch(loginUser(values));
-    // navigate("/");
+  const values = useAppSelector((store) => store.LoginUserRecucer);
+  useEffect(() => {
+    setLoading(values?.loading);
+    setError(values?.error);
+  }, [values]);
+  const handleSubmit = async (values: LoginParams) => {
+    await dispatch(loginUser(values));
+    navigate("/");
   };
   return (
     <Row align="middle" justify="center" className="login__form__container">
