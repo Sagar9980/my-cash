@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Typography, Button, Form, Input, Row, Col, Checkbox } from "antd";
 // import { ReactComponent as GoogleIcon } from "Assets/Icons/Google.svg";
 import "./RegisterForm.scss";
@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 function RegisterForm() {
   const navigate = useNavigate();
   // const dispatch = useAppDispatch();
-  // const [error, setError] = useState<any>();
-  // const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(false);
   const [form] = useForm();
   // const values = useAppSelector((store) => store.RegisterUserReducer);
   // useEffect(() => {
@@ -45,8 +45,8 @@ function RegisterForm() {
         <Typography.Paragraph type="secondary" style={{ textAlign: "center" }}>
           Or
         </Typography.Paragraph>
-        {true && (
-          <Typography.Paragraph type="warning">good</Typography.Paragraph>
+        {error && (
+          <Typography.Paragraph type="warning">{error}</Typography.Paragraph>
         )}
         <Form layout="vertical" form={form} onFinish={handleSubmit}>
           <Form.Item
@@ -81,7 +81,7 @@ function RegisterForm() {
             </Typography.Link>
           </div>
           <Form.Item>
-            <Button type="primary" htmlType="submit" loading={false}>
+            <Button type="primary" htmlType="submit" loading={loading}>
               Register
             </Button>
           </Form.Item>
