@@ -18,6 +18,7 @@ root.render(
           colorPrimary: "#3C91E6",
           fontFamily: "Poppins",
           fontSize: 16,
+          colorTextHeading: "#3C91E6",
         },
       }}
     >

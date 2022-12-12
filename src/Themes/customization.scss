@@ -43,14 +43,14 @@ h1,h2,h3,h4,h5{
 }
 
 .ant-layout-sider{
-    background:$dim-white;
+    background:$dim-white !important;
 }
 
 .ant-menu{
     &.ant-menu-inline, &.ant-menu-inline-collapsed{
         .ant-menu-item-selected{
             background-color: $light-blue !important;
-            color: $dim-white;
+            color: $dim-white !important;
             svg{
                 path{
                     fill: $dim-white !important;
@@ -62,15 +62,15 @@ h1,h2,h3,h4,h5{
             }
         }
         .ant-menu-item{
-            line-height: 50px;
+            line-height: 50px !important;
            
            
         }
     }
 }
 .ant-layout-sider-trigger{
-    background-color: $light-blue;
-    color: $dim-white;
+    background-color: $light-blue !important;
+    color: $dim-white !important;
 }
 
 
