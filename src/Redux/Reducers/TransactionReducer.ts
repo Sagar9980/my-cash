@@ -18,7 +18,7 @@ const initialState = {
   data: [],
 };
 
-export const TransactionReducer = (state: any = initialState, action: any) => {
+export const TransactionReducer = (state = initialState, action: any) => {
   switch (action.type) {
     //  CREATE TRANSACTION
     case CREATE_TRANSACTION:
@@ -51,5 +51,7 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
       return { data: action?.payload?.data, loading: false };
     case DELETE_TRANSACTION_FAILURE:
       return { ...state, loading: false };
+    default:
+      return { ...state };
   }
 };

@@ -55,33 +55,35 @@ export const UpdateTransaction =
   };
 
 //FETCHING TRANSACTIONS
-export const GetAllTransaction = (params: any) => async (dispatch: any) => {
-  dispatch({ type: GET_TRANSACTION });
-  await getAllTransactions(params)
-    .then((res) => {
-      message.success("Transactions fetched successfully");
-      {
-        dispatch({ type: GET_TRANSACTION_SUCCESS, payload: res?.data });
-      }
-    })
-    .catch((err) => {
-      dispatch({ type: GET_TRANSACTION_FAILURE });
-      message.error("Error while fetching transactions");
-    });
-};
+export const GetAllTransaction =
+  (params: any) => async (dispatch: any, getState: any) => {
+    dispatch({ type: GET_TRANSACTION });
+    await getAllTransactions(params)
+      .then((res) => {
+        message.success("Transactions fetched successfully");
+        {
+          dispatch({ type: GET_TRANSACTION_SUCCESS, payload: res?.data });
+        }
+      })
+      .catch((err) => {
+        dispatch({ type: GET_TRANSACTION_FAILURE });
+        message.error("Error while fetching transactions");
+      });
+  };
 
 //DELETING TRANSACTION
-export const DeleteTransaction = (params: any) => async (dispatch: any) => {
-  dispatch({ type: DELETE_TRANSACTION });
-  await deleteTransaction(params)
-    .then((res) => {
-      message.success("Transaction deleted successfully");
-      {
-        dispatch({ type: DELETE_TRANSACTION_SUCCESS, payload: res?.data });
-      }
-    })
-    .catch((err) => {
-      dispatch({ type: DELETE_TRANSACTION_FAILURE });
-      message.error("Error while deleting transaction");
-    });
-};
+export const DeleteTransaction =
+  (params: any) => async (dispatch: any, getState: any) => {
+    dispatch({ type: DELETE_TRANSACTION });
+    await deleteTransaction(params)
+      .then((res) => {
+        message.success("Transaction deleted successfully");
+        {
+          dispatch({ type: DELETE_TRANSACTION_SUCCESS, payload: res?.data });
+        }
+      })
+      .catch((err) => {
+        dispatch({ type: DELETE_TRANSACTION_FAILURE });
+        message.error("Error while deleting transaction");
+      });
+  };
