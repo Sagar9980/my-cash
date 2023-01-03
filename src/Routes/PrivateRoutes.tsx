@@ -8,7 +8,7 @@ function PrivateRoutes() {
     <AdminContainer>
       <Routes>
         <Route path="/" element={<DashboardView />} />
-        <Route path="/transactions" element={<TransactionRoute />} />
+        <Route path="/transactions/*" element={<TransactionRoute />} />
       </Routes>
     </AdminContainer>
   );

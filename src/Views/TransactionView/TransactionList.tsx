@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GetAllTransactions } from "Redux/Actions/TransactionActions";
 import {
   Row,
   Col,
@@ -14,14 +15,36 @@ import {
   InputNumber,
 } from "antd";
 import { ReactComponent as AddIcon } from "Assets/Icons/add.svg";
-import RecentTransactions from "Components/RecentTransactions/RecentTransactions";
 import TransactionsTable from "Components/TransactionsTable/TransactionsTable";
+import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
+
 const { Search } = Input;
 const { RangePicker } = DatePicker;
 function TransactionList() {
+  const dispatch = useAppDispatch();
+
   const [open, setOpen] = useState<boolean>(false);
   const onSearch = () => {};
   const handleAddTransaction = () => {};
+  const [transactionData, setTansactionData] = useState([]);
+
+  const { data } = useAppSelector((store) => store.TransactionReducer);
+
+  useEffect(() => {
+    if (data) {
+      setTansactionData(data);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    const id = localStorage.getItem("user");
+    const fetchTransactions = async (id: any) => {
+      console.log(id);
+      await dispatch(GetAllTransactions({ id: id }));
+    };
+    fetchTransactions(id);
+  }, []);
+
   return (
     <>
       <Row className="box shadow rounded dim-white">
@@ -52,7 +75,7 @@ function TransactionList() {
           </Row>
           <Row style={{ margin: "20px 0px" }}>
             <Col lg={24}>
-              <TransactionsTable />
+              <TransactionsTable data={transactionData} />
             </Col>
           </Row>
         </Col>

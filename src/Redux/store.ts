@@ -2,9 +2,9 @@ import {
   legacy_createStore as createStore,
   compose,
   applyMiddleware,
-} from 'redux';
-import { rootReducers } from './Reducers/rootReducers';
-import thunk from 'redux-thunk';
+} from "redux";
+import { rootReducers } from "./Reducers/rootReducers";
+import thunk from "redux-thunk";
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION__?: typeof compose;

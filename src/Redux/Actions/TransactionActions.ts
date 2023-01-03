@@ -54,22 +54,22 @@ export const UpdateTransaction =
       });
   };
 
-//FETCHING TRANSACTIONS
-export const GetAllTransaction =
-  (params: any) => async (dispatch: any, getState: any) => {
-    dispatch({ type: GET_TRANSACTION });
-    await getAllTransactions(params)
-      .then((res) => {
-        message.success("Transactions fetched successfully");
-        {
-          dispatch({ type: GET_TRANSACTION_SUCCESS, payload: res?.data });
-        }
-      })
-      .catch((err) => {
-        dispatch({ type: GET_TRANSACTION_FAILURE });
-        message.error("Error while fetching transactions");
-      });
-  };
+// FETCHING TRANSACTIONS
+export const GetAllTransactions = (params: any) => async (dispatch: any) => {
+  console.log("Hello");
+  dispatch({ type: GET_TRANSACTION });
+  await getAllTransactions(params)
+    .then((res) => {
+      message.success("Transactions fetched successfully");
+      {
+        dispatch({ type: GET_TRANSACTION_SUCCESS, payload: res?.data });
+      }
+    })
+    .catch((err) => {
+      dispatch({ type: GET_TRANSACTION_FAILURE });
+      message.error("Error while fetching transactions");
+    });
+};
 
 //DELETING TRANSACTION
 export const DeleteTransaction =

@@ -14,11 +14,12 @@ import {
 } from "./../ActionTypes/TransactionTypes";
 
 const initialState = {
-  loading: true,
+  loading: false,
   data: [],
 };
 
-export const TransactionReducer = (state = initialState, action: any) => {
+export const TransactionReducer = (state: any = initialState, action: any) => {
+  console.log(action.type);
   switch (action.type) {
     //  CREATE TRANSACTION
     case CREATE_TRANSACTION:
