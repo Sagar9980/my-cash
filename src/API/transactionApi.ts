@@ -1,0 +1,38 @@
+import { API } from "./api";
+
+//create transaction
+export const createTransaction = (data: any, params: any) => {
+  return API({
+    url: "/transaction/add",
+    method: "POST",
+    data: data,
+    params: params,
+  });
+};
+
+//update transaction
+export const updateTransaction = (data: any, params: any) => {
+  return API({
+    url: "/transaction/update",
+    method: "POST",
+    data: data,
+    params: params,
+  });
+};
+
+//GetAllTransactions
+export const getAllTransactions = (params: any) => {
+  return API({
+    url: "/transaction/all",
+    method: "GET",
+    params: params,
+  });
+};
+
+export const deleteTransaction = (params: any) => {
+  return API({
+    url: "/transaction/delete",
+    method: "GET",
+    params: params,
+  });
+};
