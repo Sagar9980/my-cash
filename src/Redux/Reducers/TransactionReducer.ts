@@ -16,6 +16,7 @@ import {
 const initialState = {
   loading: false,
   data: [],
+  response: {},
 };
 
 export const TransactionReducer = (state: any = initialState, action: any) => {
@@ -25,7 +26,7 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
     case CREATE_TRANSACTION:
       return { ...state, loading: true };
     case CREATE_TRANSACTION_SUCCESS:
-      return { data: action?.payload?.data, loading: false };
+      return { response: action?.payload?.data, loading: false };
     case CREATE_TRANSACTION_FAILURE:
       return { ...state, loading: false };
 
