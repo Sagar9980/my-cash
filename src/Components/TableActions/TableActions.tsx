@@ -30,7 +30,7 @@ function TableActions({ onDelete }: any) {
   );
   return (
     <Dropdown overlay={OverlayContent} placement="bottom" trigger={["click"]}>
-      <MoreOutlined style={{ fontSize: 24 }} />
+      <MoreOutlined style={{ fontSize: 20 }} />
     </Dropdown>
   );
 }

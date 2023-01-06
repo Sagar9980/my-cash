@@ -43,6 +43,7 @@ function TransactionsTable({ data }: any) {
       title: "Date",
       dataIndex: "createdAt",
       key: "createdAt",
+      width: "150px",
       render: (row: any) => (
         <Typography.Text>{dateFormat(row, "yyyy/mm/dd")}</Typography.Text>
       ),
@@ -51,6 +52,7 @@ function TransactionsTable({ data }: any) {
       title: "",
       dataIndex: "id",
       key: "id",
+      width: "10px",
       render: (text: string) => (
         <TableActions
           onEdit={() => {}}
