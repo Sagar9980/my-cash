@@ -50,7 +50,7 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
     case DELETE_TRANSACTION:
       return { ...state, loading: true };
     case DELETE_TRANSACTION_SUCCESS:
-      return { data: action?.payload?.data, loading: false };
+      return { response: action?.payload?.data, loading: false };
     case DELETE_TRANSACTION_FAILURE:
       return { ...state, loading: false };
     default:
