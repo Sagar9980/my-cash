@@ -4,7 +4,7 @@ import TableActions from "Components/TableActions/TableActions";
 import { DeleteTransaction } from "Redux/Actions/TransactionActions";
 import { useAppDispatch } from "../../Redux/hooks";
 
-function TransactionsTable({ data }: any) {
+function TransactionsTable({ data, onEdit }: any) {
   const dispatch = useAppDispatch();
 
   const onDeleteHandler = async (id: any) => {
@@ -55,7 +55,7 @@ function TransactionsTable({ data }: any) {
       width: "10px",
       render: (text: string) => (
         <TableActions
-          onEdit={() => {}}
+          onEdit={() => onEdit(text)}
           onDelete={() => onDeleteHandler(text)}
         />
       ),

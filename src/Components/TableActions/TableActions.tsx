@@ -6,7 +6,7 @@ import {
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
 
-function TableActions({ onDelete }: any) {
+function TableActions({ onDelete, onEdit }: any) {
   const confirm = () => {
     Modal.confirm({
       title: "Confirm",
@@ -20,7 +20,7 @@ function TableActions({ onDelete }: any) {
   };
   const OverlayContent = () => (
     <Menu>
-      <Menu.Item onClick={() => {}} icon={<EditFilled />}>
+      <Menu.Item onClick={onEdit} icon={<EditFilled />}>
         Edit
       </Menu.Item>
       <Menu.Item onClick={() => confirm()} icon={<DeleteOutlined />}>

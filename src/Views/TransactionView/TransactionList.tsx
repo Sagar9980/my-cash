@@ -45,9 +45,13 @@ function TransactionList() {
     setLoading(false);
     setOpen(false);
   };
+
   const handleTypeChange = (value: any) => {
     setType(value);
     form.setFieldValue("category", null);
+  };
+  const onEditHandler = (id: any) => {
+    setOpen(true);
   };
 
   useEffect(() => {
@@ -95,7 +99,10 @@ function TransactionList() {
           </Row>
           <Row style={{ margin: "20px 0px" }}>
             <Col lg={24}>
-              <TransactionsTable data={transactionData} />
+              <TransactionsTable
+                data={transactionData}
+                onEdit={onEditHandler}
+              />
             </Col>
           </Row>
         </Col>
