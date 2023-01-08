@@ -6,7 +6,7 @@ import {
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
 
-function TableActions({ onDelete, onEdit }: any) {
+function TableActions({ onDelete, onEdit, action }: any) {
   const confirm = () => {
     Modal.confirm({
       title: "Confirm",
@@ -29,9 +29,11 @@ function TableActions({ onDelete, onEdit }: any) {
     </Menu>
   );
   return (
-    <Dropdown overlay={OverlayContent} placement="bottom" trigger={["click"]}>
-      <MoreOutlined style={{ fontSize: 20 }} />
-    </Dropdown>
+    <div style={{ display: action && "none" }}>
+      <Dropdown overlay={OverlayContent} placement="bottom" trigger={["click"]}>
+        <MoreOutlined style={{ fontSize: 20 }} />
+      </Dropdown>
+    </div>
   );
 }
 

@@ -8,6 +8,9 @@ import {
   GET_TRANSACTION,
   GET_TRANSACTION_SUCCESS,
   GET_TRANSACTION_FAILURE,
+  GET_TRANSACTIONS,
+  GET_TRANSACTIONS_SUCCESS,
+  GET_TRANSACTIONS_FAILURE,
   DELETE_TRANSACTION,
   DELETE_TRANSACTION_SUCCESS,
   DELETE_TRANSACTION_FAILURE,
@@ -38,11 +41,19 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
     case UPDATE_TRANSACTION_FAILURE:
       return { ...state, loading: false };
 
-    //GET TRANSACTION
+    //GET ALL TRANSACTION
+    case GET_TRANSACTIONS:
+      return { ...state, loading: true };
+    case GET_TRANSACTIONS_SUCCESS:
+      return { data: action?.payload?.data, loading: false };
+    case GET_TRANSACTIONS_FAILURE:
+      return { ...state, loading: false };
+
+    //GET SINGLE TRANSACTION
     case GET_TRANSACTION:
       return { ...state, loading: true };
     case GET_TRANSACTION_SUCCESS:
-      return { data: action?.payload?.data, loading: false };
+      return { respons: action?.payload?.data, loading: false };
     case GET_TRANSACTION_FAILURE:
       return { ...state, loading: false };
 

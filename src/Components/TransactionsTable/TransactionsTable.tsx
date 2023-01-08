@@ -3,12 +3,12 @@ import dateFormat from "dateformat";
 import TableActions from "Components/TableActions/TableActions";
 import { DeleteTransaction } from "Redux/Actions/TransactionActions";
 import { useAppDispatch } from "../../Redux/hooks";
+import { useState, useEffect } from "react";
 
-function TransactionsTable({ data, onEdit }: any) {
+function TransactionsTable({ data, onEdit, noAction = false }: any) {
   const dispatch = useAppDispatch();
-
+  const [action, setAction] = useState<boolean>(noAction);
   const onDeleteHandler = async (id: any) => {
-    console.log("this ran");
     await dispatch(DeleteTransaction({ id: id }));
   };
 

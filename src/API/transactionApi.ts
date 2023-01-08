@@ -29,6 +29,15 @@ export const getAllTransactions = (params: any) => {
   });
 };
 
+//GetSingle trnasaction
+export const getSingleTransaction = (params: any) => {
+  return API({
+    url: "/transaction",
+    method: "GET",
+    params: params,
+  });
+};
+
 export const deleteTransaction = (params: any) => {
   return API({
     url: "/transaction/delete",

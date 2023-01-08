@@ -5,6 +5,9 @@ import {
   UPDATE_TRANSACTION,
   UPDATE_TRANSACTION_SUCCESS,
   UPDATE_TRANSACTION_FAILURE,
+  GET_TRANSACTIONS,
+  GET_TRANSACTIONS_SUCCESS,
+  GET_TRANSACTIONS_FAILURE,
   GET_TRANSACTION,
   GET_TRANSACTION_SUCCESS,
   GET_TRANSACTION_FAILURE,
@@ -17,6 +20,7 @@ import {
   createTransaction,
   updateTransaction,
   getAllTransactions,
+  getSingleTransaction,
   deleteTransaction,
 } from "API/transactionApi";
 
@@ -56,21 +60,34 @@ export const UpdateTransaction =
 
 // FETCHING TRANSACTIONS
 export const GetAllTransactions = (params: any) => async (dispatch: any) => {
-  console.log("Hello");
-  dispatch({ type: GET_TRANSACTION });
+  dispatch({ type: GET_TRANSACTIONS });
   await getAllTransactions(params)
     .then((res) => {
       message.success("Transactions fetched successfully");
       {
-        dispatch({ type: GET_TRANSACTION_SUCCESS, payload: res?.data });
+        dispatch({ type: GET_TRANSACTIONS_SUCCESS, payload: res?.data });
       }
     })
     .catch((err) => {
-      dispatch({ type: GET_TRANSACTION_FAILURE });
+      dispatch({ type: GET_TRANSACTIONS_FAILURE });
       message.error("Error while fetching transactions");
     });
 };
 
+//GET SINGLE TRANSACTION
+export const GetSingleTransaction = (params: any) => async (dispatch: any) => {
+  dispatch({ type: GET_TRANSACTION });
+  await getSingleTransaction(params)
+    .then((res) => {
+      {
+        dispatch({ tpe: GET_TRANSACTION_SUCCESS, payload: res?.data });
+      }
+    })
+    .catch((err) => {
+      dispatch({ type: GET_TRANSACTION_FAILURE });
+      message.error("Error while fetching transaction");
+    });
+};
 //DELETING TRANSACTION
 export const DeleteTransaction =
   (params: any) => async (dispatch: any, getState: any) => {
