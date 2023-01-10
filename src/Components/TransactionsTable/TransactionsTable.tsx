@@ -23,6 +23,11 @@ function TransactionsTable({ data, onEdit, noAction = false }: any) {
       title: "Title",
       dataIndex: "title",
       key: "title",
+      render: (text: any) => (
+        <Typography.Text style={{ fontWeight: "bold", color: "#3C91E6" }}>
+          {text}
+        </Typography.Text>
+      ),
     },
     {
       title: "Description",
@@ -38,14 +43,24 @@ function TransactionsTable({ data, onEdit, noAction = false }: any) {
       title: "Amount",
       dataIndex: "amount",
       key: "amount",
+      render: (text: any, row: any) => (
+        <Typography.Text
+          style={{
+            color: row.type == "income" ? "#9FD356" : "#FA824C",
+            fontWeight: "bold",
+          }}
+        >
+          {text}
+        </Typography.Text>
+      ),
     },
     {
       title: "Date",
       dataIndex: "createdAt",
       key: "createdAt",
       width: "150px",
-      render: (row: any) => (
-        <Typography.Text>{dateFormat(row, "yyyy/mm/dd")}</Typography.Text>
+      render: (text: any) => (
+        <Typography.Text>{dateFormat(text, "yyyy/mm/dd")}</Typography.Text>
       ),
     },
     {
