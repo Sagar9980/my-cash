@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import {
   CreateTansaction,
-  GetAllTransactions,
+  GetSingleTransaction,
+  UpdateTransaction,
 } from "Redux/Actions/TransactionActions";
 import {
   Row,
@@ -31,17 +32,23 @@ function TransactionList() {
 
   const [open, setOpen] = useState<boolean>(false);
   const [type, setType] = useState<string>();
-  const [transactionData, setTansactionData] = useState([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const { data } = useAppSelector((store) => store.TransactionReducer);
+  const [update, setUpdate] = useState<boolean>(true);
+  const [transactionID, setTransactionID] = useState();
+  const { response } = useAppSelector((store) => store.TransactionReducer);
+
   const onSearch = () => {};
 
   const handleAddTransaction = async () => {
     const formData = form.getFieldsValue();
     setLoading(true);
-    await dispatch(
-      CreateTansaction(formData, { id: localStorage.getItem("user") })
-    );
+    if (update) {
+      await dispatch(UpdateTransaction(formData, { id: transactionID }));
+    } else {
+      await dispatch(
+        CreateTansaction(formData, { id: localStorage.getItem("user") })
+      );
+    }
     setLoading(false);
     setOpen(false);
   };
@@ -50,24 +57,22 @@ function TransactionList() {
     setType(value);
     form.setFieldValue("category", null);
   };
-  const onEditHandler = (id: any) => {
+  const onEditHandler = async (id: any) => {
     setOpen(true);
+    setTransactionID(id);
+    await dispatch(GetSingleTransaction({ id: id }));
   };
-
   useEffect(() => {
-    if (data) {
-      setTansactionData(data);
+    if (response) {
+      setUpdate(true);
+      form.setFieldsValue({
+        title: response?.title,
+        description: response?.description,
+        category: response?.category,
+        amount: response?.amount,
+      });
     }
-  }, [data]);
-
-  useEffect(() => {
-    const id = localStorage.getItem("user");
-    const fetchTransactions = async (id: any) => {
-      console.log(id);
-      await dispatch(GetAllTransactions({ id: id }));
-    };
-    fetchTransactions(id);
-  }, []);
+  }, [response]);
 
   return (
     <>
@@ -78,7 +83,10 @@ function TransactionList() {
               Transaction History
             </Typography.Title>
             <AddIcon
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                setUpdate(false);
+                setOpen(true);
+              }}
               style={{ cursor: "pointer" }}
             />
           </Space>
@@ -99,10 +107,7 @@ function TransactionList() {
           </Row>
           <Row style={{ margin: "20px 0px" }}>
             <Col lg={24}>
-              <TransactionsTable
-                data={transactionData}
-                onEdit={onEditHandler}
-              />
+              <TransactionsTable onEdit={onEditHandler} />
             </Col>
           </Row>
         </Col>
@@ -113,7 +118,7 @@ function TransactionList() {
         onOk={handleAddTransaction}
         onCancel={() => setOpen(false)}
         confirmLoading={loading}
-        okText={"Add"}
+        okText={update ? "Update" : "Add"}
       >
         <Form layout="vertical" form={form}>
           <Form.Item label="Choose transaction type: " name="type">

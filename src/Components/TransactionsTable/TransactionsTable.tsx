@@ -1,13 +1,17 @@
 import { Table, Typography } from "antd";
 import dateFormat from "dateformat";
 import TableActions from "Components/TableActions/TableActions";
-import { DeleteTransaction } from "Redux/Actions/TransactionActions";
-import { useAppDispatch } from "../../Redux/hooks";
+import {
+  DeleteTransaction,
+  GetAllTransactions,
+} from "Redux/Actions/TransactionActions";
+import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
 import { useState, useEffect } from "react";
 
-function TransactionsTable({ data, onEdit, noAction = false }: any) {
+function TransactionsTable({ onEdit, noAction = false }: any) {
   const dispatch = useAppDispatch();
-  const [action, setAction] = useState<boolean>(noAction);
+  const { data } = useAppSelector((store) => store.TransactionReducer);
+
   const onDeleteHandler = async (id: any) => {
     await dispatch(DeleteTransaction({ id: id }));
   };
@@ -46,7 +50,7 @@ function TransactionsTable({ data, onEdit, noAction = false }: any) {
       render: (text: any, row: any) => (
         <Typography.Text
           style={{
-            color: row.type == "income" ? "#9FD356" : "#FA824C",
+            color: row.type == "Income" ? "#9FD356" : "#FA824C",
             fontWeight: "bold",
           }}
         >
@@ -76,6 +80,13 @@ function TransactionsTable({ data, onEdit, noAction = false }: any) {
       ),
     },
   ];
+  useEffect(() => {
+    const id = localStorage.getItem("user");
+    const fetchTransactions = async (id: any) => {
+      await dispatch(GetAllTransactions({ id: id }));
+    };
+    fetchTransactions(id);
+  }, []);
   return <Table dataSource={data} columns={columns} />;
 }
 

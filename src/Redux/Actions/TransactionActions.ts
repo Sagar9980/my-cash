@@ -80,7 +80,7 @@ export const GetSingleTransaction = (params: any) => async (dispatch: any) => {
   await getSingleTransaction(params)
     .then((res) => {
       {
-        dispatch({ tpe: GET_TRANSACTION_SUCCESS, payload: res?.data });
+        dispatch({ type: GET_TRANSACTION_SUCCESS, payload: res?.data });
       }
     })
     .catch((err) => {

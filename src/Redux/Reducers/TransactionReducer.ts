@@ -23,7 +23,6 @@ const initialState = {
 };
 
 export const TransactionReducer = (state: any = initialState, action: any) => {
-  console.log(action.type);
   switch (action.type) {
     //  CREATE TRANSACTION
     case CREATE_TRANSACTION:
@@ -37,7 +36,7 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
     case UPDATE_TRANSACTION:
       return { ...state, loading: true };
     case UPDATE_TRANSACTION_SUCCESS:
-      return { data: action?.payload?.data, loading: false };
+      return { ...state, loading: false };
     case UPDATE_TRANSACTION_FAILURE:
       return { ...state, loading: false };
 
@@ -53,7 +52,7 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
     case GET_TRANSACTION:
       return { ...state, loading: true };
     case GET_TRANSACTION_SUCCESS:
-      return { respons: action?.payload?.data, loading: false };
+      return { ...state, response: action?.payload?.data, loading: false };
     case GET_TRANSACTION_FAILURE:
       return { ...state, loading: false };
 
