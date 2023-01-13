@@ -1,4 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  CreateTansaction,
+  GetSingleTransaction,
+  UpdateTransaction,
+} from "Redux/Actions/TransactionActions";
 import {
   Row,
   Col,
@@ -14,14 +19,61 @@ import {
   InputNumber,
 } from "antd";
 import { ReactComponent as AddIcon } from "Assets/Icons/add.svg";
-import RecentTransactions from "Components/RecentTransactions/RecentTransactions";
 import TransactionsTable from "Components/TransactionsTable/TransactionsTable";
+import { incomeCategory, expenseCategory } from "utils/category";
+import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
+import { useForm } from "antd/lib/form/Form";
+
 const { Search } = Input;
 const { RangePicker } = DatePicker;
 function TransactionList() {
+  const dispatch = useAppDispatch();
+  const [form] = useForm();
+
   const [open, setOpen] = useState<boolean>(false);
+  const [type, setType] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [update, setUpdate] = useState<boolean>(true);
+  const [transactionID, setTransactionID] = useState();
+  const { response } = useAppSelector((store) => store.TransactionReducer);
+
   const onSearch = () => {};
-  const handleAddTransaction = () => {};
+
+  const handleAddTransaction = async () => {
+    const formData = form.getFieldsValue();
+    setLoading(true);
+    if (update) {
+      await dispatch(UpdateTransaction(formData, { id: transactionID }));
+    } else {
+      await dispatch(
+        CreateTansaction(formData, { id: localStorage.getItem("user") })
+      );
+    }
+    setLoading(false);
+    setOpen(false);
+  };
+
+  const handleTypeChange = (value: any) => {
+    setType(value);
+    form.setFieldValue("category", null);
+  };
+  const onEditHandler = async (id: any) => {
+    setOpen(true);
+    setTransactionID(id);
+    await dispatch(GetSingleTransaction({ id: id }));
+  };
+  useEffect(() => {
+    if (response) {
+      setUpdate(true);
+      form.setFieldsValue({
+        title: response?.title,
+        description: response?.description,
+        category: response?.category,
+        amount: response?.amount,
+      });
+    }
+  }, [response]);
+
   return (
     <>
       <Row className="box shadow rounded dim-white">
@@ -31,7 +83,10 @@ function TransactionList() {
               Transaction History
             </Typography.Title>
             <AddIcon
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                setUpdate(false);
+                setOpen(true);
+              }}
               style={{ cursor: "pointer" }}
             />
           </Space>
@@ -52,7 +107,7 @@ function TransactionList() {
           </Row>
           <Row style={{ margin: "20px 0px" }}>
             <Col lg={24}>
-              <TransactionsTable />
+              <TransactionsTable onEdit={onEditHandler} />
             </Col>
           </Row>
         </Col>
@@ -62,11 +117,17 @@ function TransactionList() {
         open={open}
         onOk={handleAddTransaction}
         onCancel={() => setOpen(false)}
-        okText={"Add"}
+        confirmLoading={loading}
+        okText={update ? "Update" : "Add"}
       >
-        <Form layout="vertical">
-          <Typography.Text>Choose transaction type:</Typography.Text>
-          <Segmented options={["Income", "Expense"]} />
+        <Form layout="vertical" form={form}>
+          <Form.Item label="Choose transaction type: " name="type">
+            <Segmented
+              defaultValue={"Income"}
+              options={["Income", "Expense"]}
+              onChange={handleTypeChange}
+            />
+          </Form.Item>
           <Divider />
           <Form.Item
             label="Title"
@@ -87,44 +148,39 @@ function TransactionList() {
           >
             <Input placeholder="Salary paid for month December" size="small" />
           </Form.Item>
-          <Space>
-            <Form.Item
-              label="Type"
-              name="type"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select type!",
-                },
-              ]}
-            >
-              <Select
-                defaultValue=""
-                options={[
+          <Row gutter={[20, 20]}>
+            <Col lg={12}>
+              <Form.Item
+                label="Category"
+                name="category"
+                rules={[
                   {
-                    value: "salary",
-                    label: "Salary",
-                  },
-                  {
-                    value: "bonus",
-                    label: "Bonus",
+                    required: true,
+                    message: "Please select type!",
                   },
                 ]}
-              />
-            </Form.Item>
-            <Form.Item
-              label="Amount"
-              name="amount"
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter amount!",
-                },
-              ]}
-            >
-              <InputNumber />
-            </Form.Item>
-          </Space>
+              >
+                <Select
+                  options={type == "Expense" ? expenseCategory : incomeCategory}
+                />
+              </Form.Item>
+            </Col>
+            <Col lg={12}>
+              <Form.Item
+                shouldUpdate
+                label="Amount"
+                name="amount"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter amount!",
+                  },
+                ]}
+              >
+                <InputNumber style={{ width: "100%" }} />
+              </Form.Item>
+            </Col>
+          </Row>
         </Form>
       </Modal>
     </>

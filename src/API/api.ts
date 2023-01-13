@@ -1,8 +1,8 @@
 import axios from "axios";
-export const API = axios.create({
-  baseURL: "https://fmsdb.onrender.com/api",
-});
-
 // export const API = axios.create({
-//   baseURL: "http://localhost:4000/api",
+//   baseURL: "https://fmsdb.onrender.com/api",
 // });
+
+export const API = axios.create({
+  baseURL: "http://localhost:4000/api",
+});

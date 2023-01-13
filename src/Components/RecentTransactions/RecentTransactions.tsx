@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import "./RecentTransactions.scss";
 import { ReactComponent as ExternalLinkIcon } from "../../Assets/Icons/external-link-icon.svg";
 import TransactionsTable from "../../Components/TransactionsTable/TransactionsTable";
+import { useAppSelector } from "Redux/hooks";
 
 function RecentTransactions() {
+  const { data } = useAppSelector((store) => store.TransactionReducer);
   return (
     <Row className="recent__transactions__container box shadow rounded dim-white">
       <Col lg={24}>
@@ -28,7 +30,7 @@ function RecentTransactions() {
             </Row>
           </Col>
         </Row>
-        <TransactionsTable />
+        <TransactionsTable data={data} noAction />
       </Col>
     </Row>
   );
