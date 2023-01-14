@@ -18,6 +18,7 @@ import {
   Select,
   InputNumber,
 } from "antd";
+import Loader from "Components/Loader/Loader";
 import { ReactComponent as AddIcon } from "Assets/Icons/add.svg";
 import TransactionsTable from "Components/TransactionsTable/TransactionsTable";
 import { incomeCategory, expenseCategory } from "utils/category";
@@ -110,6 +111,11 @@ function TransactionList() {
               <TransactionsTable onEdit={onEditHandler} />
             </Col>
           </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Loader />
         </Col>
       </Row>
       <Modal
