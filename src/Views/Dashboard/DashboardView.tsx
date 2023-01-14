@@ -53,7 +53,7 @@ function DashboardView() {
   ];
   return (
     <>
-      {true ? (
+      {loading ? (
         <Loader />
       ) : (
         <Row gutter={[20, 20]}>
