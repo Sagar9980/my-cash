@@ -5,8 +5,11 @@ import reportWebVitals from "./reportWebVitals";
 import { ConfigProvider } from "antd";
 import { Provider } from "react-redux";
 import store from "Redux/store";
+import {QueryClient, QueryClientProvider} from 'react-query';
 import "Themes/App.scss";
 
+
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -22,9 +25,11 @@ root.render(
         },
       }}
     >
+      <QueryClientProvider client = {queryClient}>
       <Provider store={store}>
         <App />
       </Provider>
+      </QueryClientProvider>
     </ConfigProvider>
   </React.StrictMode>
 );

@@ -12,7 +12,7 @@ const ContentLayout = (props: any) => {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <SideBar />
+        <SideBar isCollapsed={collapsed} />
       </Sider>
       <Content style={{ paddingTop: "30px" }}>{props.children}</Content>
     </Layout>

@@ -113,11 +113,6 @@ function TransactionList() {
           </Row>
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <Loader />
-        </Col>
-      </Row>
       <Modal
         title="Add  Transactions"
         open={open}
