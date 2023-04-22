@@ -114,7 +114,7 @@ function TransactionList() {
         </Col>
       </Row>
       <Modal
-        title="Add  Transactions"
+        title={`${update ? "Update" : "Add"} Transaction`}
         open={open}
         onOk={handleAddTransaction}
         onCancel={() => setOpen(false)}
@@ -124,8 +124,8 @@ function TransactionList() {
         <Form layout="vertical" form={form}>
           <Form.Item label="Choose transaction type: " name="type">
             <Segmented
-              defaultValue={"Income"}
-              options={["Income", "Expense"]}
+              defaultValue={"income"}
+              options={["income", "expense"]}
               onChange={handleTypeChange}
             />
           </Form.Item>

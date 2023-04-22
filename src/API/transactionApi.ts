@@ -54,3 +54,12 @@ export const getLineChartData = (params: any) => {
     params: params,
   });
 };
+
+//Get dashboard data
+export const getDashboardData = (params: any) => {
+  return API({
+    url: "transaction/dashboarddata",
+    method: "GET",
+    params: params,
+  });
+};

@@ -16,7 +16,6 @@ function LineChart() {
     data: lineChartData,
   } = useQuery(["data", params], () => getLineChartData(params));
   const [data, setData] = useState<any>([]);
-  console.log(data, "linechartdata");
   useEffect(() => {
     if (lineChartData) {
       setData(lineChartData.data.data);
