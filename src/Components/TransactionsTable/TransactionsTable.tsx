@@ -50,7 +50,7 @@ function TransactionsTable({ onEdit, noAction = false }: any) {
       render: (text: any, row: any) => (
         <Typography.Text
           style={{
-            color: row.type == "Income" ? "#9FD356" : "#FA824C",
+            color: row.type == "income" ? "#9FD356" : "#FA824C",
             fontWeight: "bold",
           }}
         >

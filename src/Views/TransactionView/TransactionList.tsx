@@ -42,6 +42,7 @@ function TransactionList() {
 
   const handleAddTransaction = async () => {
     const formData = form.getFieldsValue();
+    if (!formData.type) formData.type = "income";
     setLoading(true);
     if (update) {
       await dispatch(UpdateTransaction(formData, { id: transactionID }));
@@ -124,9 +125,9 @@ function TransactionList() {
         <Form layout="vertical" form={form}>
           <Form.Item label="Choose transaction type: " name="type">
             <Segmented
-              defaultValue={"income"}
+              defaultValue="income"
               options={["income", "expense"]}
-              onChange={handleTypeChange}
+              // onChange={handleTypeChange}
             />
           </Form.Item>
           <Divider />
@@ -162,7 +163,7 @@ function TransactionList() {
                 ]}
               >
                 <Select
-                  options={type == "Expense" ? expenseCategory : incomeCategory}
+                  options={type == "expense" ? expenseCategory : incomeCategory}
                 />
               </Form.Item>
             </Col>
