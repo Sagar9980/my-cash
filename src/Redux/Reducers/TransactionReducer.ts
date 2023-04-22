@@ -28,7 +28,12 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
     case CREATE_TRANSACTION:
       return { ...state, loading: true };
     case CREATE_TRANSACTION_SUCCESS:
-      return { response: action?.payload?.data, loading: false };
+      state?.data?.push(action?.payload?.data);
+      return {
+        ...state,
+        response: action?.payload?.message,
+        loading: false,
+      };
     case CREATE_TRANSACTION_FAILURE:
       return { ...state, loading: false };
 
@@ -36,7 +41,11 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
     case UPDATE_TRANSACTION:
       return { ...state, loading: true };
     case UPDATE_TRANSACTION_SUCCESS:
-      return { ...state, loading: false };
+      const tempList = state?.data?.filter(
+        (d: any) => d?.id !== action?.payload?.data.id
+      );
+      tempList.push(action?.payload?.data);
+      return { ...state, loading: false, data: tempList };
     case UPDATE_TRANSACTION_FAILURE:
       return { ...state, loading: false };
 
@@ -60,7 +69,13 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
     case DELETE_TRANSACTION:
       return { ...state, loading: true };
     case DELETE_TRANSACTION_SUCCESS:
-      return { response: action?.payload?.data, loading: false };
+      console.log(action.payload);
+      return {
+        ...state,
+        response: action?.payload,
+        loading: false,
+        data: state.data.filter((d: any) => d?.id !== action?.payload?.id),
+      };
     case DELETE_TRANSACTION_FAILURE:
       return { ...state, loading: false };
     default:

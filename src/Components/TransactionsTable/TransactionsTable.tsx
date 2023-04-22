@@ -12,6 +12,8 @@ function TransactionsTable({ onEdit, noAction = false }: any) {
   const dispatch = useAppDispatch();
   const { data, loading } = useAppSelector((store) => store.TransactionReducer);
 
+  console.log(data, "dataaa");
+
   const onDeleteHandler = async (id: any) => {
     await dispatch(DeleteTransaction({ id: id }));
   };
@@ -87,7 +89,7 @@ function TransactionsTable({ onEdit, noAction = false }: any) {
     };
     fetchTransactions(id);
   }, []);
-  return <Table dataSource={data} loading={loading} columns={columns} />;
+  return <Table dataSource={[...data]} loading={loading} columns={columns} />;
 }
 
 export default TransactionsTable;
