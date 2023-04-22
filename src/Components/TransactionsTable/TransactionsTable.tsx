@@ -12,6 +12,8 @@ function TransactionsTable({ onEdit, noAction = false }: any) {
   const dispatch = useAppDispatch();
   const { data, loading } = useAppSelector((store) => store.TransactionReducer);
 
+  console.log(data, "dataaa");
+
   const onDeleteHandler = async (id: any) => {
     await dispatch(DeleteTransaction({ id: id }));
   };
@@ -50,7 +52,7 @@ function TransactionsTable({ onEdit, noAction = false }: any) {
       render: (text: any, row: any) => (
         <Typography.Text
           style={{
-            color: row.type == "Income" ? "#9FD356" : "#FA824C",
+            color: row.type == "income" ? "#9FD356" : "#FA824C",
             fontWeight: "bold",
           }}
         >
@@ -87,7 +89,7 @@ function TransactionsTable({ onEdit, noAction = false }: any) {
     };
     fetchTransactions(id);
   }, []);
-  return <Table dataSource={data} loading={loading} columns={columns} />;
+  return <Table dataSource={[...data]} loading={loading} columns={columns} />;
 }
 
 export default TransactionsTable;

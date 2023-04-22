@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import {
   CREATE_TRANSACTION,
   CREATE_TRANSACTION_SUCCESS,
@@ -91,13 +92,13 @@ export const GetSingleTransaction = (params: any) => async (dispatch: any) => {
 //DELETING TRANSACTION
 export const DeleteTransaction =
   (params: any) => async (dispatch: any, getState: any) => {
-    console.log("This ran", params);
+    console.log(params);
     dispatch({ type: DELETE_TRANSACTION });
     await deleteTransaction(params)
       .then((res) => {
         message.success("Transaction deleted successfully");
         {
-          dispatch({ type: DELETE_TRANSACTION_SUCCESS, payload: res?.data });
+          dispatch({ type: DELETE_TRANSACTION_SUCCESS, payload: params });
         }
       })
       .catch((err) => {

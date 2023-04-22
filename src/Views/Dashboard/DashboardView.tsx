@@ -11,9 +11,18 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
 import { fetchUserDetail } from "../../Redux/Actions/UserDetailAction";
 import Loader from "Components/Loader/Loader";
+import { useQuery } from "react-query";
+import { getDashboardData } from "API/transactionApi";
 
 const now = new Date();
 function DashboardView() {
+  const params = {
+    id: localStorage.getItem("user"),
+  };
+  const { data: dashboardData } = useQuery(["dashboardData", params], () =>
+    getDashboardData(params)
+  );
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     const getUserDetail = async () => {
@@ -33,21 +42,21 @@ function DashboardView() {
       id: 1,
       title: "Current Balance",
       image: <MoneyBagIcon />,
-      amount: currentBalance,
+      amount: dashboardData?.data?.data?.currentBalance,
       color: "#3C91E6",
     },
     {
       id: 2,
       title: "Total Income",
       image: <ChartIncreasing />,
-      amount: totalIncome,
+      amount: dashboardData?.data?.data?.totalIncome,
       color: "#9FD356",
     },
     {
       id: 3,
       title: "Total Expense",
       image: <ChartDecreasing />,
-      amount: totalExpenses,
+      amount: dashboardData?.data?.data?.totalExpense,
       color: "#FA824C",
     },
   ];

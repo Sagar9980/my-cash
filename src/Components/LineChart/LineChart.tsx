@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "@ant-design/plots";
 import { Row, Col, Typography } from "antd";
+import { useQuery } from "react-query";
 import "./LineChart.scss";
-import { line_data, LineDataTypes } from "utils/linechart_data";
-
+import { LineDataTypes } from "utils/linechart_data";
+import { getLineChartData } from "API/transactionApi";
+import { AxiosResponse } from "axios";
 function LineChart() {
-  const [data, setData] = useState<LineDataTypes[]>(line_data);
-
+  const params = {
+    id: localStorage.getItem("user"),
+  };
+  const {
+    isLoading,
+    error,
+    data: lineChartData,
+  } = useQuery(["data", params], () => getLineChartData(params));
+  const [data, setData] = useState<any>([]);
+  useEffect(() => {
+    if (lineChartData) {
+      setData(lineChartData.data.data);
+    }
+  }, [lineChartData]);
   const config = {
     data,
     xField: "month",

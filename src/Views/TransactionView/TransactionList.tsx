@@ -42,6 +42,7 @@ function TransactionList() {
 
   const handleAddTransaction = async () => {
     const formData = form.getFieldsValue();
+    if (!formData.type) formData.type = "income";
     setLoading(true);
     if (update) {
       await dispatch(UpdateTransaction(formData, { id: transactionID }));
@@ -113,13 +114,8 @@ function TransactionList() {
           </Row>
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <Loader />
-        </Col>
-      </Row>
       <Modal
-        title="Add  Transactions"
+        title={`${update ? "Update" : "Add"} Transaction`}
         open={open}
         onOk={handleAddTransaction}
         onCancel={() => setOpen(false)}
@@ -129,8 +125,8 @@ function TransactionList() {
         <Form layout="vertical" form={form}>
           <Form.Item label="Choose transaction type: " name="type">
             <Segmented
-              defaultValue={"Income"}
-              options={["Income", "Expense"]}
+              defaultValue="income"
+              options={["income", "expense"]}
               onChange={handleTypeChange}
             />
           </Form.Item>
@@ -167,7 +163,7 @@ function TransactionList() {
                 ]}
               >
                 <Select
-                  options={type == "Expense" ? expenseCategory : incomeCategory}
+                  options={type == "expense" ? expenseCategory : incomeCategory}
                 />
               </Form.Item>
             </Col>

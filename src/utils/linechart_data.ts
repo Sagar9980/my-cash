@@ -1,128 +1,128 @@
 export interface LineDataTypes {
-  statement: string;
-  month: string;
-  amount: number;
+  statement: string | undefined;
+  month: string | undefined;
+  amount: number | undefined;
 }
 
 export const line_data = [
   {
-    statement: 'income',
-    month: 'January',
+    statement: "income",
+    month: "January",
     amount: 50000,
   },
   {
-    statement: 'income',
-    month: 'Feburary',
+    statement: "income",
+    month: "Feburary",
     amount: 30000,
   },
   {
-    statement: 'income',
-    month: 'March',
+    statement: "income",
+    month: "March",
     amount: 60000,
   },
   {
-    statement: 'income',
-    month: 'April',
+    statement: "income",
+    month: "April",
     amount: 40000,
   },
   {
-    statement: 'income',
-    month: 'May',
+    statement: "income",
+    month: "May",
     amount: 50000,
   },
   {
-    statement: 'income',
-    month: 'June',
+    statement: "income",
+    month: "June",
     amount: 30000,
   },
   {
-    statement: 'income',
-    month: 'July',
+    statement: "income",
+    month: "July",
     amount: 40000,
   },
   {
-    statement: 'income',
-    month: 'August',
+    statement: "income",
+    month: "August",
     amount: 60000,
   },
   {
-    statement: 'income',
-    month: 'September',
+    statement: "income",
+    month: "September",
     amount: 30000,
   },
   {
-    statement: 'income',
-    month: 'October',
+    statement: "income",
+    month: "October",
     amount: 40000,
   },
   {
-    statement: 'income',
-    month: 'November',
+    statement: "income",
+    month: "November",
     amount: 30000,
   },
   {
-    statement: 'income',
-    month: 'December',
+    statement: "income",
+    month: "December",
     amount: 10000,
   },
   {
-    statement: 'expense',
-    month: 'January',
+    statement: "expense",
+    month: "January",
     amount: 30000,
   },
   {
-    statement: 'expense',
-    month: 'Feburary',
+    statement: "expense",
+    month: "Feburary",
     amount: 20000,
   },
   {
-    statement: 'expense',
-    month: 'March',
+    statement: "expense",
+    month: "March",
     amount: 40000,
   },
   {
-    statement: 'expense',
-    month: 'April',
+    statement: "expense",
+    month: "April",
     amount: 30000,
   },
   {
-    statement: 'expense',
-    month: 'May',
+    statement: "expense",
+    month: "May",
     amount: 40000,
   },
   {
-    statement: 'expense',
-    month: 'June',
+    statement: "expense",
+    month: "June",
     amount: 20000,
   },
   {
-    statement: 'expense',
-    month: 'July',
+    statement: "expense",
+    month: "July",
     amount: 50000,
   },
   {
-    statement: 'expense',
-    month: 'August',
+    statement: "expense",
+    month: "August",
     amount: 30000,
   },
   {
-    statement: 'expense',
-    month: 'September',
+    statement: "expense",
+    month: "September",
     amount: 40000,
   },
   {
-    statement: 'expense',
-    month: 'October',
+    statement: "expense",
+    month: "October",
     amount: 20000,
   },
   {
-    statement: 'expense',
-    month: 'November',
+    statement: "expense",
+    month: "November",
     amount: 40000,
   },
   {
-    statement: 'expense',
-    month: 'December',
+    statement: "expense",
+    month: "December",
     amount: 30000,
   },
 ];

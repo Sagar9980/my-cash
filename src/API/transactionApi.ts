@@ -45,3 +45,21 @@ export const deleteTransaction = (params: any) => {
     params: params,
   });
 };
+
+//Get Line chart Data
+export const getLineChartData = (params: any) => {
+  return API({
+    url: "transaction/linechartdata",
+    method: "GET",
+    params: params,
+  });
+};
+
+//Get dashboard data
+export const getDashboardData = (params: any) => {
+  return API({
+    url: "transaction/dashboarddata",
+    method: "GET",
+    params: params,
+  });
+};
