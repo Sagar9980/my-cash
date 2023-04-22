@@ -127,7 +127,7 @@ function TransactionList() {
             <Segmented
               defaultValue="income"
               options={["income", "expense"]}
-              // onChange={handleTypeChange}
+              onChange={handleTypeChange}
             />
           </Form.Item>
           <Divider />
