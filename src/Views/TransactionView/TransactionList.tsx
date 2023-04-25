@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import {
   CreateTansaction,
   GetSingleTransaction,
@@ -18,7 +18,6 @@ import {
   Select,
   InputNumber,
 } from "antd";
-import Loader from "Components/Loader/Loader";
 import { ReactComponent as AddIcon } from "Assets/Icons/add.svg";
 import TransactionsTable from "Components/TransactionsTable/TransactionsTable";
 import { incomeCategory, expenseCategory } from "utils/category";
@@ -33,12 +32,17 @@ function TransactionList() {
 
   const [open, setOpen] = useState<boolean>(false);
   const [type, setType] = useState<string>();
+  const [filterType, setFilterType] = useState<string | number>("All");
+  const [filterText, setFilterText] = useState<string>("");
+  const [filterDate, setFilterDate] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [update, setUpdate] = useState<boolean>(true);
   const [transactionID, setTransactionID] = useState();
   const { response } = useAppSelector((store) => store.TransactionReducer);
 
-  const onSearch = () => {};
+  const handleDateChange = (date: any) => {
+    setFilterDate(date);
+  };
 
   const handleAddTransaction = async () => {
     const formData = form.getFieldsValue();
@@ -94,22 +98,30 @@ function TransactionList() {
           </Space>
           <Row justify="space-between" style={{ marginTop: 10 }}>
             <Col>
-              <Segmented options={["All", "Income", "Expenses"]} />
+              <Segmented
+                defaultValue={"All"}
+                onChange={(value) => setFilterType(value)}
+                options={["All", "Income", "Expense"]}
+              />
             </Col>
             <Col>
               <Space>
                 <Search
                   placeholder="search transactions..."
-                  onSearch={onSearch}
-                  enterButton
+                  onChange={(event) => setFilterText(event.target.value)}
                 />
-                <RangePicker />
+                <RangePicker onChange={handleDateChange} />
               </Space>
             </Col>
           </Row>
           <Row style={{ margin: "20px 0px" }}>
             <Col lg={24}>
-              <TransactionsTable onEdit={onEditHandler} />
+              <TransactionsTable
+                filterDate={filterDate}
+                filterText={filterText}
+                filterType={filterType}
+                onEdit={onEditHandler}
+              />
             </Col>
           </Row>
         </Col>

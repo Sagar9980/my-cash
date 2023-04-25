@@ -8,13 +8,42 @@ import {
 import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
 import { useState, useEffect } from "react";
 
-function TransactionsTable({ onEdit, noAction = false }: any) {
+function TransactionsTable({
+  onEdit,
+  noAction = false,
+  filterType,
+  filterText,
+  filterDate,
+}: any) {
+  console.log(filterText);
   const dispatch = useAppDispatch();
   const { data, loading } = useAppSelector((store) => store.TransactionReducer);
-
+  const [filteredData, setFilteredData] = useState([]);
   const onDeleteHandler = async (id: any) => {
     await dispatch(DeleteTransaction({ id: id }));
   };
+
+  useEffect(() => {
+    if (data) {
+      let newData = data;
+
+      if (filterType !== "All") {
+        newData = newData.filter((item: any) => {
+          return item?.type === filterType.toLowerCase();
+        });
+      }
+
+      if (filterText) {
+        newData = newData.filter((item: any) => {
+          return item?.title.toLowerCase().includes(filterText.toLowerCase());
+        });
+      }
+
+      setFilteredData(newData);
+    } else {
+      setFilteredData(data);
+    }
+  }, [data, filterType, filterText, filterDate]);
 
   const columns = [
     {
@@ -87,7 +116,9 @@ function TransactionsTable({ onEdit, noAction = false }: any) {
     };
     fetchTransactions(id);
   }, []);
-  return <Table dataSource={[...data]} loading={loading} columns={columns} />;
+  return (
+    <Table dataSource={[...filteredData]} loading={loading} columns={columns} />
+  );
 }
 
 export default TransactionsTable;
