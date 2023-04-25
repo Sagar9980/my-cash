@@ -92,7 +92,6 @@ export const GetSingleTransaction = (params: any) => async (dispatch: any) => {
 //DELETING TRANSACTION
 export const DeleteTransaction =
   (params: any) => async (dispatch: any, getState: any) => {
-    console.log(params);
     dispatch({ type: DELETE_TRANSACTION });
     await deleteTransaction(params)
       .then((res) => {

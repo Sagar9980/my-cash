@@ -69,7 +69,6 @@ export const TransactionReducer = (state: any = initialState, action: any) => {
     case DELETE_TRANSACTION:
       return { ...state, loading: true };
     case DELETE_TRANSACTION_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         response: action?.payload,
