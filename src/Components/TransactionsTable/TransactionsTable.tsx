@@ -8,7 +8,6 @@ import {
 import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
 import { useState, useEffect } from "react";
 import dayjs from "dayjs";
-import isBetween from "dayjs/plugin/isBetween";
 
 function TransactionsTable({
   onEdit,
@@ -17,7 +16,6 @@ function TransactionsTable({
   filterText,
   filterDate,
 }: any) {
-  console.log(filterDate, "date");
   const dispatch = useAppDispatch();
   const { data, loading } = useAppSelector((store) => store.TransactionReducer);
   const [filteredData, setFilteredData] = useState([]);
