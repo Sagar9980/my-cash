@@ -7,6 +7,7 @@ import {
 } from "Redux/Actions/TransactionActions";
 import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
 import { useState, useEffect } from "react";
+import dayjs from "dayjs";
 
 function TransactionsTable({
   onEdit,
@@ -15,7 +16,6 @@ function TransactionsTable({
   filterText,
   filterDate,
 }: any) {
-  console.log(filterText);
   const dispatch = useAppDispatch();
   const { data, loading } = useAppSelector((store) => store.TransactionReducer);
   const [filteredData, setFilteredData] = useState([]);
@@ -27,7 +27,7 @@ function TransactionsTable({
     if (data) {
       let newData = data;
 
-      if (filterType !== "All") {
+      if (filterType && filterType !== "All") {
         newData = newData.filter((item: any) => {
           return item?.type === filterType.toLowerCase();
         });
@@ -36,6 +36,18 @@ function TransactionsTable({
       if (filterText) {
         newData = newData.filter((item: any) => {
           return item?.title.toLowerCase().includes(filterText.toLowerCase());
+        });
+      }
+      if (filterDate && filterDate.length > 0) {
+        const filterDates = filterDate.map((data: any) =>
+          dayjs(data).format("YYYY-MM-DDTHH:mm:ss.SSSZ")
+        );
+        newData = newData.filter((item: any) => {
+          let itemDate = Date.parse(item?.createdAt);
+          return (
+            itemDate >= Date.parse(filterDates[0]) &&
+            itemDate <= Date.parse(filterDates[1])
+          );
         });
       }
 
