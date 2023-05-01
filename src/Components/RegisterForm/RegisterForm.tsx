@@ -71,12 +71,7 @@ function RegisterForm() {
           >
             <Input.Password />
           </Form.Item>
-          <div className="form__options">
-            <Checkbox>Remember me</Checkbox>
-            <Typography.Link style={{ fontWeight: "bold" }}>
-              Forgot Password?
-            </Typography.Link>
-          </div>
+
           <Form.Item>
             <Button type="primary" htmlType="submit" loading={loading}>
               Register
@@ -87,7 +82,7 @@ function RegisterForm() {
           <Typography.Paragraph>
             Already Registered?{" "}
             <Typography.Link
-              style={{ fontWeight: "bold" }}
+              className="text medium-bold"
               onClick={() => navigate("/login")}
             >
               Login
