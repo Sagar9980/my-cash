@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Typography, Button, Form, Input, Row, Col, Checkbox } from "antd";
+import { Typography, Button, Form, Input, Row, Col } from "antd";
 import { ReactComponent as GoogleIcon } from "Assets/Icons/Google.svg";
 import "./RegisterForm.scss";
 import { useForm } from "antd/lib/form/Form";
