@@ -11,12 +11,12 @@ h1,h2,h3,h4,h5{
     margin-bottom: 5px !important;
 }
 
-//Form Customizatio
+//Form Customization
 .ant-form{
    .ant-form-item{
     margin: 30px 0px;
     .ant-input, .ant-input-password, .ant-btn{
-        height: 72px;
+        height: 50px;
         border-radius: 9px;
     }
     .ant-input-password{
@@ -133,33 +133,33 @@ h1,h2,h3,h4,h5{
 
 
 ///csss cutomizations
-.ant-form .ant-form-item {
-    margin: 30px 0px;
-  }
-  .ant-form .ant-form-item .ant-input,
-  .ant-form .ant-form-item .ant-input-password,
-  .ant-form .ant-form-item .ant-btn {
-    height: 72px;
-    border-radius: 9px;
-  }
-  .ant-form .ant-form-item .ant-input-password .ant-input {
-    height: 100%;
-  }
-  .ant-form .ant-form-item .ant-btn {
-    width: 100%;
-    margin: 20px 0px;
-  }
-  .ant-form .ant-form-item .ant-form-item-label > label.ant-form-item-required {
-    color: #342E37;
-  }
-  .ant-form .ant-form-item .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
-    content: none;
-  }
-  .ant-layout-sider {
-    background: #fff;
-  }
-  .ant-menu .ant-menu-item-selected {
-    background-color: #3C91E6 !important;
-    color: #fff;
-  }
+// .ant-form .ant-form-item {
+//     margin: 30px 0px;
+//   }
+//   .ant-form .ant-form-item .ant-input,
+//   .ant-form .ant-form-item .ant-input-password,
+//   .ant-form .ant-form-item .ant-btn {
+//     height: 72px;
+//     border-radius: 9px;
+//   }
+//   .ant-form .ant-form-item .ant-input-password .ant-input {
+//     height: 100%;
+//   }
+//   .ant-form .ant-form-item .ant-btn {
+//     width: 100%;
+//     margin: 20px 0px;
+//   }
+//   .ant-form .ant-form-item .ant-form-item-label > label.ant-form-item-required {
+//     color: #342E37;
+//   }
+//   .ant-form .ant-form-item .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+//     content: none;
+//   }
+//   .ant-layout-sider {
+//     background: #fff;
+//   }
+//   .ant-menu .ant-menu-item-selected {
+//     background-color: #3C91E6 !important;
+//     color: #fff;
+//   }
   

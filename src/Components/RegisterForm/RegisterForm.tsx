@@ -34,10 +34,7 @@ function RegisterForm() {
         <Typography.Paragraph type="secondary">
           Enter your credentials to acces your account
         </Typography.Paragraph>
-        <Button
-          //  icon={<GoogleIcon />}
-          className="google__auth__btn"
-        >
+        <Button icon={<GoogleIcon />} className="google__auth__btn">
           <Typography.Text type="secondary">
             Login in with Google
           </Typography.Text>
