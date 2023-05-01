@@ -127,7 +127,7 @@ function TransactionsTable({
       await dispatch(GetAllTransactions({ id: id }));
     };
     fetchTransactions(id);
-  }, []);
+  }, [dispatch]);
   return (
     <Table dataSource={[...filteredData]} loading={loading} columns={columns} />
   );

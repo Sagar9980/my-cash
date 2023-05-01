@@ -23,7 +23,7 @@ function RegisterForm() {
     if (values?.response) {
       navigate("/auth/login");
     }
-  }, [values?.response]);
+  }, [values?.response, navigate]);
   const handleSubmit = (values: any) => {
     dispatch(registerUser(values));
   };

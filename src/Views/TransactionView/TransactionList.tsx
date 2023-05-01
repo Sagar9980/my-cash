@@ -78,7 +78,7 @@ function TransactionList() {
         amount: response?.amount,
       });
     }
-  }, [response]);
+  }, [response, form]);
 
   return (
     <>
@@ -175,7 +175,9 @@ function TransactionList() {
                 ]}
               >
                 <Select
-                  options={type == "expense" ? expenseCategory : incomeCategory}
+                  options={
+                    type === "expense" ? expenseCategory : incomeCategory
+                  }
                 />
               </Form.Item>
             </Col>
