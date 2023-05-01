@@ -67,7 +67,7 @@ function LoginForm() {
           </Form.Item>
           <div className="form__options">
             <Checkbox>Remember me</Checkbox>
-            <Typography.Link style={{ fontWeight: "bold" }}>
+            <Typography.Link className="text medium-bold">
               Forgot Password?
             </Typography.Link>
           </div>
@@ -81,7 +81,7 @@ function LoginForm() {
           <Typography.Paragraph>
             Don't have account?{" "}
             <Typography.Link
-              style={{ fontWeight: "bold" }}
+              className="text medium-bold"
               onClick={() => {
                 navigate("/auth/register");
               }}

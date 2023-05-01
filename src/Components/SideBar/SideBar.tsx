@@ -13,7 +13,7 @@ function SideBar({ isCollapsed }: any) {
   return (
     <Row>
       <Col lg={24}>
-        <div>
+        <div style={{cursor: "pointer"}} onClick={()=> navigate('/')}>
           <Typography.Title level={3} style={{ textAlign: "center" }}>
             <img src={isCollapsed ? LogoIcon : Logo} alt="logo" />
           </Typography.Title>

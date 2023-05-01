@@ -91,7 +91,7 @@ function TransactionsTable({
       render: (text: any, row: any) => (
         <Typography.Text
           style={{
-            color: row.type == "income" ? "#9FD356" : "#FA824C",
+            color: row.type === "income" ? "#9FD356" : "#FA824C",
             fontWeight: "bold",
           }}
         >
@@ -127,7 +127,7 @@ function TransactionsTable({
       await dispatch(GetAllTransactions({ id: id }));
     };
     fetchTransactions(id);
-  }, []);
+  }, [dispatch]);
   return (
     <Table dataSource={[...filteredData]} loading={loading} columns={columns} />
   );

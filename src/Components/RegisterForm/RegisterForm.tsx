@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Typography, Button, Form, Input, Row, Col, Checkbox } from "antd";
+import { Typography, Button, Form, Input, Row, Col } from "antd";
 import { ReactComponent as GoogleIcon } from "Assets/Icons/Google.svg";
 import "./RegisterForm.scss";
 import { useForm } from "antd/lib/form/Form";
@@ -23,7 +23,7 @@ function RegisterForm() {
     if (values?.response) {
       navigate("/auth/login");
     }
-  }, [values?.response]);
+  }, [values?.response, navigate]);
   const handleSubmit = (values: any) => {
     dispatch(registerUser(values));
   };
@@ -34,10 +34,7 @@ function RegisterForm() {
         <Typography.Paragraph type="secondary">
           Enter your credentials to acces your account
         </Typography.Paragraph>
-        <Button
-          //  icon={<GoogleIcon />}
-          className="google__auth__btn"
-        >
+        <Button icon={<GoogleIcon />} className="google__auth__btn">
           <Typography.Text type="secondary">
             Login in with Google
           </Typography.Text>
@@ -74,12 +71,7 @@ function RegisterForm() {
           >
             <Input.Password />
           </Form.Item>
-          <div className="form__options">
-            <Checkbox>Remember me</Checkbox>
-            <Typography.Link style={{ fontWeight: "bold" }}>
-              Forgot Password?
-            </Typography.Link>
-          </div>
+
           <Form.Item>
             <Button type="primary" htmlType="submit" loading={loading}>
               Register
@@ -90,7 +82,7 @@ function RegisterForm() {
           <Typography.Paragraph>
             Already Registered?{" "}
             <Typography.Link
-              style={{ fontWeight: "bold" }}
+              className="text medium-bold"
               onClick={() => navigate("/login")}
             >
               Login

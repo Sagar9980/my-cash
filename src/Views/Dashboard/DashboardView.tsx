@@ -29,14 +29,10 @@ function DashboardView() {
       await dispatch(fetchUserDetail({ id: localStorage.getItem("user") }));
     };
     getUserDetail();
-  }, []);
+  }, [dispatch]);
 
   const { data, loading } = useAppSelector((store) => store.UserDetailReducer);
-  const currentBalance = data?.userdetail?.currentBalance;
-  const totalIncome = data?.userdetail?.totalIncome;
-  const totalExpenses = data?.userdetail?.totalExpenses;
   const userName = data?.name;
-
   const cards = [
     {
       id: 1,
