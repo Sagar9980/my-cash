@@ -19,6 +19,7 @@ function TransactionsTable({
   const dispatch = useAppDispatch();
   const { data, loading } = useAppSelector((store) => store.TransactionReducer);
   const [filteredData, setFilteredData] = useState([]);
+  console.log(filteredData);
   const onDeleteHandler = async (id: any) => {
     await dispatch(DeleteTransaction({ id: id }));
   };
@@ -129,7 +130,12 @@ function TransactionsTable({
     fetchTransactions(id);
   }, [dispatch]);
   return (
-    <Table dataSource={[...filteredData]} loading={loading} columns={columns} />
+    <Table
+      dataSource={filteredData}
+      key={new Date().getTime()}
+      loading={loading}
+      columns={columns}
+    />
   );
 }
 
