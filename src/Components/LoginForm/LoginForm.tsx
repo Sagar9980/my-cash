@@ -63,7 +63,7 @@ function LoginForm() {
             name="password"
             rules={[{ required: true, message: "Please input your password!" }]}
           >
-            <Input.Password />
+            <Input.Password height={50} />
           </Form.Item>
           <div className="form__options">
             <Checkbox>Remember me</Checkbox>
