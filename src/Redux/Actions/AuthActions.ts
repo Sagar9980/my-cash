@@ -7,9 +7,9 @@ import {
   REGISTER_USER_FAILURE,
   LoginParams,
   RegisterParams,
-} from 'Redux/ActionTypes/AuthTypes';
-import { userLogin, userRegister } from 'API/authApi';
-import { message } from 'antd';
+} from "Redux/ActionTypes/AuthTypes";
+import { userLogin, userRegister } from "API/authApi";
+import { message } from "antd";
 
 export const loginUser =
   (params: LoginParams) => async (dispatch: any, getState: any) => {
@@ -18,7 +18,6 @@ export const loginUser =
       .then((res) => {
         message.success(res?.data?.message);
         dispatch({ type: LOGIN_USER_SUCCESS, payload: res?.data?.message });
-        localStorage.setItem('user', res?.data?.user);
       })
       .catch((err) => {
         dispatch({
