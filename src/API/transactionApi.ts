@@ -29,7 +29,7 @@ export const getAllTransactions = (params: any) => {
 //GetSingle trnasaction
 export const getSingleTransaction = (params: any) => {
   return API({
-    url: "/transaction",
+    url: "/transaction/single",
     method: "GET",
     params: params,
   });
