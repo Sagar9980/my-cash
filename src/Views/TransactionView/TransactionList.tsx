@@ -51,9 +51,7 @@ function TransactionList() {
     if (update) {
       await dispatch(UpdateTransaction(formData, { id: transactionID }));
     } else {
-      await dispatch(
-        CreateTansaction(formData, { id: localStorage.getItem("user") })
-      );
+      await dispatch(CreateTansaction(formData));
     }
     setLoading(false);
     setOpen(false);

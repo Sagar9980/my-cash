@@ -1,22 +1,20 @@
 import { API } from "./api";
 
 //create transaction
-export const createTransaction = (data: any, params: any) => {
+export const createTransaction = (data: any) => {
   return API({
     url: "/transaction/add",
     method: "POST",
     data: data,
-    params: params,
   });
 };
 
 //update transaction
-export const updateTransaction = (data: any, params: any) => {
+export const updateTransaction = (data: any) => {
   return API({
     url: "/transaction/update",
     method: "POST",
     data: data,
-    params: params,
   });
 };
 
@@ -25,7 +23,6 @@ export const getAllTransactions = (params: any) => {
   return API({
     url: "/transaction/all",
     method: "GET",
-    params: params,
   });
 };
 
@@ -51,7 +48,6 @@ export const getLineChartData = (params: any) => {
   return API({
     url: "transaction/linechartdata",
     method: "GET",
-    params: params,
   });
 };
 
@@ -60,6 +56,5 @@ export const getDashboardData = (params: any) => {
   return API({
     url: "transaction/dashboarddata",
     method: "GET",
-    params: params,
   });
 };

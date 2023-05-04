@@ -26,7 +26,7 @@ function DashboardView() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     const getUserDetail = async () => {
-      await dispatch(fetchUserDetail({ id: localStorage.getItem("user") }));
+      await dispatch(fetchUserDetail());
     };
     getUserDetail();
   }, [dispatch]);

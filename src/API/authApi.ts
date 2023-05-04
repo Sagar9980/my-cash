@@ -3,7 +3,7 @@ import { LoginParams, RegisterParams } from "Redux/ActionTypes/AuthTypes";
 
 export const userLogin = (data: LoginParams) => {
   return API({
-    url: "/login",
+    url: "auth/login",
     method: "POST",
     data: data,
     withCredentials: true,
@@ -12,7 +12,7 @@ export const userLogin = (data: LoginParams) => {
 
 export const userRegister = (data: RegisterParams) => {
   return API({
-    url: "/register",
+    url: "auth/register",
     method: "POST",
     data: data,
     withCredentials: true,
@@ -21,7 +21,7 @@ export const userRegister = (data: RegisterParams) => {
 
 export const logoutUser = () => {
   return API({
-    url: "/logout",
+    url: "auth/logout",
     method: "GET",
     withCredentials: true,
   });

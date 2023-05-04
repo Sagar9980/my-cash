@@ -1,9 +1,8 @@
-import { API } from './api';
+import { API } from "./api";
 
-export const getUserDetail = (data: any) => {
+export const getUserDetail = () => {
   return API({
-    url: '/user-detail',
-    method: 'GET',
-    params: data,
+    url: "/user-detail",
+    method: "GET",
   });
 };

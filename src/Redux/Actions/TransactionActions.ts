@@ -27,9 +27,9 @@ import {
 
 //CREATE TRANSACTION
 export const CreateTansaction =
-  (data: any, params: any) => async (dispatch: any, getState: any) => {
+  (data: any) => async (dispatch: any, getState: any) => {
     dispatch({ type: CREATE_TRANSACTION });
-    await createTransaction(data, params)
+    await createTransaction(data)
       .then((res) => {
         message.success("Transaction created successfully");
         {
@@ -46,7 +46,7 @@ export const CreateTansaction =
 export const UpdateTransaction =
   (data: any, params: any) => async (dispatch: any, getState: any) => {
     dispatch({ type: UPDATE_TRANSACTION });
-    await updateTransaction(data, params)
+    await updateTransaction(data)
       .then((res) => {
         message.success("Transaction updated successfully");
         {
