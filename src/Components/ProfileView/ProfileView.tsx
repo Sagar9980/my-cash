@@ -4,7 +4,6 @@ import { ReactComponent as LogoutIcon } from "Assets/Icons/logout-icon.svg";
 import ProfileImage from "Assets/Image/profile-image.jpg";
 import "./ProfileView.scss";
 import { useAppSelector } from "../../Redux/hooks";
-import { useState } from "react";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { logoutUser } from "../../API/authApi";
 import { useNavigate } from "react-router-dom";
