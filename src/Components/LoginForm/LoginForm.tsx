@@ -66,7 +66,9 @@ function LoginForm() {
             <Input.Password />
           </Form.Item>
           <div className="form__options">
-            <Checkbox>Remember me</Checkbox>
+            <Form.Item name="rememberMe" valuePropName="checked">
+              <Checkbox>Remember me</Checkbox>
+            </Form.Item>
             <Typography.Link className="text medium-bold">
               Forgot Password?
             </Typography.Link>
