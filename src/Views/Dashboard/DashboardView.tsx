@@ -77,9 +77,9 @@ function DashboardView() {
               </Col>
             </Row>
             <Row gutter={[10, 10]} justify="space-between">
-              {cards.map((card: any) => {
+              {cards.map((card: any, index: number) => {
                 return (
-                  <Col>
+                  <Col key={index}>
                     <OverviewCard {...card} />
                   </Col>
                 );
