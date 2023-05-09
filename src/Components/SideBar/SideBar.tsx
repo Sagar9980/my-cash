@@ -11,7 +11,7 @@ function SideBar({ isCollapsed }: any) {
     navigate(`/${value?.key}`);
   };
   return (
-    <Row>
+    <Row style={{ marginTop: 10 }}>
       <Col lg={24}>
         <div style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
           <Typography.Title level={3} style={{ textAlign: "center" }}>
