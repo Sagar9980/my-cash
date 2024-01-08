@@ -17,6 +17,7 @@ export const loginUser =
     await userLogin(params)
       .then((res) => {
         message.success(res?.data?.message);
+        localStorage.setItem("token", res.data.token);
         dispatch({ type: LOGIN_USER_SUCCESS, payload: res?.data?.message });
       })
       .catch((err) => {
